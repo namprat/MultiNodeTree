@@ -1,0 +1,137 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+//using System.Linq;
+
+namespace Saurab
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            using StreamReader sr = new StreamReader(@"C:\Zola\Interview\Clariti\raw_fees.csv");
+            string line;
+            Tree t = new Tree();
+
+            // Read and display lines from the file until 
+            // the end of the file is reached. 
+            int i = 0;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (i == 0) {   i++; continue;}
+                
+                string[] input = line.Split(",");
+                double fee = Convert.ToDouble(input[5]) * Convert.ToDouble(input[6]);
+                string department = input[1];
+                string category = input[2];
+                string subCategory = input[3];
+                string type = input[4];
+
+
+                var calculatedFee =CalculateFeeByDepartment(department, fee);
+
+                // add records
+                t.AddDepartment(department, calculatedFee)
+                   .AddCategory(category, calculatedFee)
+                   .AddSubcategory(subCategory, calculatedFee)
+                   .AddType(type, calculatedFee);
+            }
+
+            //What are the total Cat1 fees within Quality Assurance Category of the Development department?
+
+            var question_1_sol = Math.Round(t.DepartmmentList.Find(x => x.Name == "Development")
+                .CategoryList.Find(v => v.Name == "Quality Assurance")
+                .SubcategoryList.Find(g => g.Name == "Cat1").Fees);
+
+            //What are the total fees for the Human Resources category of the Operations department? A
+            var question_2_sol = Math.Round(t.DepartmmentList.Find(x => x.Name == "Operations")
+        .CategoryList.Find(v => v.Name == "Human Resources").Fees);
+        }
+
+        private static double CalculateFeeByDepartment(string name, double fee)
+        {
+            return name switch
+            {
+                "Marketing" => fee * 110 / 100,
+                "Sales" => fee * 150 / 100,
+                "Development" => fee * 120 / 100,
+                "Operations" => fee * 85 / 100,
+                "Support" => fee * 95 / 100,
+                _ => fee,
+            };
+        }
+    }
+
+    public class Tree
+    {
+        public List<Department> DepartmmentList { get; set; } = new List<Department>();
+
+        public Department AddDepartment(string name, double fee)
+        {
+            var dept = DepartmmentList.Find(x => x.Name == name);
+            if (dept != null) { dept.Fees += fee; return dept; }
+
+            dept = new Department() { CategoryList = new List<Category>(), Name= name, Fees= fee };
+            DepartmmentList.Add(dept);
+            return dept;
+        }
+
+    }
+
+    public class Department
+    {
+        public string Name { get; set; }
+        public double Fees { get; set; } = 0;
+        public List<Category> CategoryList { get; set; } = new List<Category>();
+
+        public Category AddCategory(string name, double fee)
+        {
+            var cat = CategoryList.Find(x => x.Name == name);
+            if (cat != null) { cat.Fees += fee; return cat; }
+
+            cat = new Category() {Name = name,  SubcategoryList= new List<Subcategory>(), Fees= fee };
+            CategoryList.Add(cat);
+            return cat;
+        }
+    }
+
+    public class Category
+    {
+        public string Name { get; set; }
+        public double Fees { get; set; } = 0;
+        public List<Subcategory> SubcategoryList { get; set; } = new List<Subcategory>();
+
+        public Subcategory AddSubcategory(string name, double fee )
+        {
+            var cat = SubcategoryList.Find(x => x.Name == name);
+            if (cat != null) { cat.Fees += fee; return cat; }
+
+            cat = new Subcategory() { Name = name, Type = new List<Type>() , Fees= fee};
+            SubcategoryList.Add(cat);
+            return cat;
+        }
+    }
+
+    public class Subcategory
+    {
+        public string Name { get; set; }
+        public double Fees { get; set; } = 0;
+        public List<Type> Type { get; set; } = new List<Type>();
+        public void AddType(string name, double fee)
+        {
+            var t = Type.Find(x => x.Name == name);
+            if (t != null) { t.Fees += fee; return; }
+
+            t = new Type() { Name = name, Fees= fee};
+            Type.Add(t);
+        }
+    }
+
+    public class Type
+    {
+        public string Name { get; set; }
+        public double Fees { get; set; } = 0;
+    }
+
+}

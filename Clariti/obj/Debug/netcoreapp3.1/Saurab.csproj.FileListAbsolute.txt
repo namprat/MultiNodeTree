@@ -1,0 +1,13 @@
+C:\Zola\Saurab\bin\Debug\netcoreapp3.1\Saurab.exe
+C:\Zola\Saurab\bin\Debug\netcoreapp3.1\Saurab.deps.json
+C:\Zola\Saurab\bin\Debug\netcoreapp3.1\Saurab.runtimeconfig.json
+C:\Zola\Saurab\bin\Debug\netcoreapp3.1\Saurab.runtimeconfig.dev.json
+C:\Zola\Saurab\bin\Debug\netcoreapp3.1\Saurab.dll
+C:\Zola\Saurab\bin\Debug\netcoreapp3.1\Saurab.pdb
+C:\Zola\Saurab\obj\Debug\netcoreapp3.1\Saurab.csprojAssemblyReference.cache
+C:\Zola\Saurab\obj\Debug\netcoreapp3.1\Saurab.AssemblyInfoInputs.cache
+C:\Zola\Saurab\obj\Debug\netcoreapp3.1\Saurab.AssemblyInfo.cs
+C:\Zola\Saurab\obj\Debug\netcoreapp3.1\Saurab.csproj.CoreCompileInputs.cache
+C:\Zola\Saurab\obj\Debug\netcoreapp3.1\Saurab.dll
+C:\Zola\Saurab\obj\Debug\netcoreapp3.1\Saurab.pdb
+C:\Zola\Saurab\obj\Debug\netcoreapp3.1\Saurab.genruntimeconfig.cache
