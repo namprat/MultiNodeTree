@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using ClaritiNS;
+using ClaritiProject.Tree;
 using System.Linq;
 
 namespace ClaritiTest
@@ -12,12 +12,12 @@ namespace ClaritiTest
         const string SCT_NAME = "subcategory-1";
         const string TYPE_NAME = "type-1";
         const double CONSTANT_FEE = 11.11;
-        Tree t;
+        MultiNodeTree t;
 
         [SetUp]
         public void Setup()
         {
-            t = new Tree();
+            t = new MultiNodeTree();
         }
 
         //Department name not found

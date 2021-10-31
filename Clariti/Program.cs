@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-//using System.Linq;
+using ClaritiProject.Tree;
 
-namespace ClaritiNS
+namespace ClaritiProject
 {
     class Program
     {
@@ -11,10 +11,8 @@ namespace ClaritiNS
         {
             using StreamReader sr = new StreamReader(@"C:\Zola\Interview\Clariti\raw_fees.csv");
             string line;
-            Tree t = new Tree();
+            MultiNodeTree t = new MultiNodeTree();
 
-            // Read and display lines from the file until 
-            // the end of the file is reached. 
             int i = 0;
 
             while ((line = sr.ReadLine()) != null)
@@ -62,76 +60,4 @@ namespace ClaritiNS
             };
         }
     }
-
-    public class Tree
-    {
-        public List<Department> DepartmmentList { get; set; } = new List<Department>();
-
-        public Department AddDepartment(string name, double fee)
-        {
-            var dept = DepartmmentList.Find(x => x.Name == name);
-            if (dept != null) { dept.Fees += fee; return dept; }
-
-            dept = new Department() { CategoryList = new List<Category>(), Name= name, Fees= fee };
-            DepartmmentList.Add(dept);
-            return dept;
-        }
-
-    }
-
-    public class Department
-    {
-        public string Name { get; set; }
-        public double Fees { get; set; } = 0;
-        public List<Category> CategoryList { get; set; } = new List<Category>();
-
-        public Category AddCategory(string name, double fee)
-        {
-            var cat = CategoryList.Find(x => x.Name == name);
-            if (cat != null) { cat.Fees += fee; return cat; }
-
-            cat = new Category() {Name = name,  SubcategoryList= new List<Subcategory>(), Fees= fee };
-            CategoryList.Add(cat);
-            return cat;
-        }
-    }
-
-    public class Category
-    {
-        public string Name { get; set; }
-        public double Fees { get; set; } = 0;
-        public List<Subcategory> SubcategoryList { get; set; } = new List<Subcategory>();
-
-        public Subcategory AddSubcategory(string name, double fee )
-        {
-            var cat = SubcategoryList.Find(x => x.Name == name);
-            if (cat != null) { cat.Fees += fee; return cat; }
-
-            cat = new Subcategory() { Name = name, Type = new List<Type>() , Fees= fee};
-            SubcategoryList.Add(cat);
-            return cat;
-        }
-    }
-
-    public class Subcategory
-    {
-        public string Name { get; set; }
-        public double Fees { get; set; } = 0;
-        public List<Type> Type { get; set; } = new List<Type>();
-        public void AddType(string name, double fee)
-        {
-            var t = Type.Find(x => x.Name == name);
-            if (t != null) { t.Fees += fee; return; }
-
-            t = new Type() { Name = name, Fees= fee};
-            Type.Add(t);
-        }
-    }
-
-    public class Type
-    {
-        public string Name { get; set; }
-        public double Fees { get; set; } = 0;
-    }
-
 }
