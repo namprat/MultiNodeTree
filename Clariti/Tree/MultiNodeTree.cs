@@ -12,7 +12,7 @@ namespace ClaritiProject.Tree
             var dept = DepartmmentList.Find(x => x.Name == name);
             if (dept != null) { dept.Fees += fee; return dept; }
 
-            dept = new Department() { CategoryList = new List<Category>(), Name = name, Fees = fee };
+            dept = new Department( name, fee);
             DepartmmentList.Add(dept);
             return dept;
         }
