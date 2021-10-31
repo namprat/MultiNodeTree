@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Saurab;
+using ClaritiNS;
 using System.Linq;
 
 namespace ClaritiTest
