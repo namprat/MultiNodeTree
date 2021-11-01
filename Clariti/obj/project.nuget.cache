@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "oyw63KoNf7gW3Edj1newvYrvqpO0v6j8DyWVZmaAgzemNL2euH7T21xTJER2eyx3AVKgcS9VS4cfYIOinyyC4g==",
+  "dgSpecHash": "FDCB4aaCbOc+fzlPK+y2UGAPVxOkQVHznrIrpSaDt685w0Qh0Tj+JRBhemyYqlWg/0jFp24I8mZlEpDmh5/BKQ==",
   "success": true,
   "projectFilePath": "C:\\Zola\\Interview\\Clariti\\ClaritiProject.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\naman\\.nuget\\packages\\nlog\\4.7.12\\nlog.4.7.12.nupkg.sha512"
+  ],
   "logs": []
 }

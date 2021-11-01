@@ -16,12 +16,19 @@ namespace ClaritiProject.Tree
 
         public Category AddCategory(string name, double fee)
         {
-            var cat = CategoryList.Find(x => x.Name == name);
-            if (cat != null) { cat.Fees += fee; return cat; }
+            try
+            {
+                var cat = CategoryList.Find(x => x.Name == name);
+                if (cat != null) { cat.Fees += fee; return cat; }
 
-            cat = new Category(name, fee);
-            CategoryList.Add(cat);
-            return cat;
+                cat = new Category(name, fee);
+                CategoryList.Add(cat);
+                return cat;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

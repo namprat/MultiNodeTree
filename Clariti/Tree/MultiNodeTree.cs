@@ -9,12 +9,16 @@ namespace ClaritiProject.Tree
 
         public Department AddDepartment(string name, double fee)
         {
-            var dept = DepartmmentList.Find(x => x.Name == name);
-            if (dept != null) { dept.Fees += fee; return dept; }
+            try
+            {
+                var dept = DepartmmentList.Find(x => x.Name == name);
+                if (dept != null) { dept.Fees += fee; return dept; }
 
-            dept = new Department( name, fee);
-            DepartmmentList.Add(dept);
-            return dept;
+                dept = new Department(name, fee);
+                DepartmmentList.Add(dept);
+                return dept;
+            }
+            catch { throw; }
         }
 
     }

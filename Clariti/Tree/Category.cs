@@ -18,12 +18,19 @@ namespace ClaritiProject.Tree
 
         public Subcategory AddSubcategory(string name, double fee)
         {
-            var cat = SubcategoryList.Find(x => x.Name == name);
-            if (cat != null) { cat.Fees += fee; return cat; }
+            try
+            {
+                var cat = SubcategoryList.Find(x => x.Name == name);
+                if (cat != null) { cat.Fees += fee; return cat; }
 
-            cat = new Subcategory(name, fee);
-            SubcategoryList.Add(cat);
-            return cat;
+                cat = new Subcategory(name, fee);
+                SubcategoryList.Add(cat);
+                return cat;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

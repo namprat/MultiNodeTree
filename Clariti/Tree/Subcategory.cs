@@ -17,11 +17,15 @@ namespace ClaritiProject.Tree
 
         public void AddType(string name, double fee)
         {
-            var t = Type.Find(x => x.Name == name);
-            if (t != null) { t.Fees += fee; return; }
+            try
+            {
+                var t = Type.Find(x => x.Name == name);
+                if (t != null) { t.Fees += fee; return; }
 
-            t = new Type(name, fee);
-            Type.Add(t);
+                t = new Type(name, fee);
+                Type.Add(t);
+            }
+            catch { throw; }
         }
     }
 

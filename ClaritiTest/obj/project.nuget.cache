@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9HR/ZtDTu4sWp4AsswGJbM8xXkgNm/vxD1WtrWRvmG0HLwliogKjRNaC/aIoRgx1eNQiIYAEHmM6uSW++UsK7Q==",
+  "dgSpecHash": "GsFn7ihvJJuVY/KiUCuv6mzwUbEm/mZLs4eeFHBOYmQ83pV+ecf8A95jOt7tNI64eWl5XCIO0YMYhuS/39NVlw==",
   "success": true,
   "projectFilePath": "C:\\Zola\\Interview\\ClaritiTest\\ClaritiTest.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.3.0\\microsoft.win32.registry.4.3.0.nupkg.sha512",
     "C:\\Users\\naman\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\naman\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\naman\\.nuget\\packages\\nlog\\4.7.12\\nlog.4.7.12.nupkg.sha512",
     "C:\\Users\\naman\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Users\\naman\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512",
     "C:\\Users\\naman\\.nuget\\packages\\nunit3testadapter\\3.16.1\\nunit3testadapter.3.16.1.nupkg.sha512",

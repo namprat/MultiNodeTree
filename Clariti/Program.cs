@@ -7,6 +7,8 @@ namespace ClaritiProject
 {
     class Program
     {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         static void Main(string[] args)
         {
             using StreamReader sr = new StreamReader(@"C:\Zola\Interview\Clariti\raw_fees.csv");
@@ -17,23 +19,33 @@ namespace ClaritiProject
 
             while ((line = sr.ReadLine()) != null)
             {
-                if (i == 0) {   i++; continue;}
-                
-                string[] input = line.Split(",");
-                double fee = Convert.ToDouble(input[5]) * Convert.ToDouble(input[6]);
-                string department = input[1];
-                string category = input[2];
-                string subCategory = input[3];
-                string type = input[4];
+                try
+                {
+                    if (i == 0) { i++; continue; }
+
+                    string[] input = line.Split(",");
+                    double fee = Convert.ToDouble(input[5]) * Convert.ToDouble(input[6]);
+                    string department = input[1];
+                    string category = input[2];
+                    string subCategory = input[3];
+                    string type = input[4];
 
 
-                var calculatedFee =CalculateFeeByDepartment(department, fee);
+                    var calculatedFee = CalculateFeeByDepartment(department, fee);
 
-                // add records
-                t.AddDepartment(department, calculatedFee)
-                   .AddCategory(category, calculatedFee)
-                   .AddSubcategory(subCategory, calculatedFee)
-                   .AddType(type, calculatedFee);
+                    // add records
+                    t.AddDepartment(department, calculatedFee)
+                       .AddCategory(category, calculatedFee)
+                       .AddSubcategory(subCategory, calculatedFee)
+                       .AddType(type, calculatedFee);
+                }
+                catch (Exception ex)
+                {
+                    //no configuration 
+                    // can use apppsetting, startup.cs configure method to set logging
+                    // in asp.net core 
+                    logger.Error(ex);
+                }
             }
 
             //What are the total Cat1 fees within Quality Assurance Category of the Development department?
